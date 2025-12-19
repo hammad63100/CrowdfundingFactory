@@ -1,0 +1,17 @@
+
+H:\Blockchain projects\Simple Crowdfunding Smart Contract project\frontend\src\components\CampaignCard.jsx
+  1:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            no-unused-vars
+  7:62  error  Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+   5 | const CampaignCard = ({ goal, raised, deadline, goalReached }) => {
+   6 |   const percentage = Math.min((Number(raised) / Number(goal)) * 100, 100);
+>  7 |   const timeLeft = Math.max(0, Number(deadline) - Math.floor(Date.now() / 1000));
+     |                                                              ^^^^^^^^^^ Cannot call impure function
+   8 |   
+   9 |   const days = Math.floor(timeLeft / (24 * 3600));
+  10 |   const hours = Math.floor((timeLeft % (24 * 3600)) / 3600);  react-hooks/purity
+
+✖ 2 problems (2 errors, 0 warnings)
+
